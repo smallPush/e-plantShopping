@@ -9,11 +9,16 @@ const CartItem = ({ onContinueShopping }) => {
 
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
- 
+    let total = 0;
+    cart.forEach(item => {
+      total += item.cost * item.quantity;
+    });
+    return total.toFixed(2); // Round to 2 decimal places
   };
 
   const handleContinueShopping = (e) => {
-   
+    e.preventDefault();
+    onContinueShopping();
   };
 
 
@@ -30,6 +35,7 @@ const CartItem = ({ onContinueShopping }) => {
 
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
+    return (item.cost * item.quantity).toFixed(2); // Round to 2 decimal places
   };
 
   return (
